@@ -211,11 +211,24 @@ You shoud now be able to play around with your API here:
 
 With the [gotrue-js](https://github.com/netlify/gotrue-js) library, as a Javascript-Developer, you could easily develop your own gotrue-admin-page. My Javascript is poor, thats why I kept talking to the api with [Imsomnia](https://insomnia.rest/): a REST Client for debugging/understanding API's - made for humans.
 
-You can find my Insomnia-preset here.
+### Adding a new User via API (Insomnia etc.)
 
-Now making a user admin could either happen via the API: using the "super-secret-operator-token" (You have to set it in your configuration).
+Create a Post Request to ```<api-root>/admin/users``` :
 
-I haven't tried this yet, because before I found out about this I logged into mariadb directly and gave myself the admin role like this:
+Body:
+```json
+{
+  "email":     "admin@example.com",
+  "password":  "password",
+  "role":      "admin"
+}
+```
+And add a Bearer Token with the "super-secret-operator-token" (You have to set it in your configuration). And send it. 
+
+Hitting ```<api-root>/admin/users``` with a GET Request and the Operator Token as authentification you'll get a list of all registered users in your response.
+
+### Editing the Database directly
+I haven't tried this at first, because before I found out above I logged into mariadb directly and gave myself the admin role like this:
 
 ```
 mysql> USE DATABASE gotrue;
