@@ -223,7 +223,9 @@ Body:
   "role":      "admin"
 }
 ```
-And add a Bearer Token with the "super-secret-operator-token" (You have to set it in your configuration). And send it. 
+Add a Bearer Token with the "super-secret-operator-token" (You have to set it in your configuration) or login as an admin user and use your personal token.
+
+And send it. 
 
 Hitting ```<api-root>/admin/users``` with a GET Request and the Operator Token as authentification you'll get a list of all registered users in your response.
 
