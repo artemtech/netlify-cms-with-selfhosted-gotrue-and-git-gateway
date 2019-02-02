@@ -198,13 +198,13 @@ You can just execute git-gateway and gotrue without further flags. Feel free to 
 
 Now we have the services running. In order for gotrue to be useful, we need to create our first user, or even better an admin user.
 
-You would expect the following to work properly:
+To create an user we can use the command line option ```admin``` 
 
 ```
-./gotrue admin createuser example@domain.org password
+./gotrue admin createuser -i 00000000-0000-0000-0000-000000000000 mail@example.com password --superadmin
 ```
 
-This is not working because the Instance which is currently running has the Instance-ID 0 and the generation of the corresponding UUID fails. Note the --superadmin flag. You can also set superadmin in the users COLUMN of the DATABASE. I haven't figured out what this is for though.
+Because we only have one instance (we haven't enabled multi-tenant mode) our instance id is zero. We pass the corresponding UUID of the instance (all zeros) with the -i flag. Note the --superadmin flag. This means an user is admin over all instances. If you have multiple instances and only want an instance wide admin, use the role property and set it to admin.
 
 You shoud now be able to play around with your API here:
 [https://gotruejs-playground.netlify.com/](https://gotruejs-playground.netlify.com/)
