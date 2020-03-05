@@ -310,9 +310,6 @@ backend:
   identity_url: "https://example.com/.netlify/identity"
   gateway_url:  "https://example.com/.netlify/git"
   site_domain:  "https://example.com/"
-  accept_roles: #optional - accepts all users if left out
-    - admin
-    - editor
 ```
 
 The .netlify/identity and .netlify/git paths are the default ones netlify cms and the identity widgets look for. You have to setup a proxy in your webservers config in order to reach the APIs of gotrue and git-gateway with these links.
